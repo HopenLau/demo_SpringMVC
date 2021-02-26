@@ -25,10 +25,14 @@
 	</context:component-scan>
 
 
+	<!-- don't handle the static resource -->
+	<mvc:default-servlet-handler />
+	
+	
 	<!-- HandlerMapping, 无需配置， Spring MVC可以默认启动。 DefaultAnnotationHandlerMapping 
 		annotation-driven HandlerMapping -->
 
-
+	<!-- if you use annotation you must configure following setting -->
 	<!--启用基于annotation的handlerMapping -->
 	<!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
 	<mvc:annotation-driven />

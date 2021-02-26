@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+	<!-- if you use annotation you must configure following setting -->
+	<!--启用基于annotation的handlerMapping -->
+	<!-- 扩充了注解驱动，可以将请求参数绑定到控制器参数 -->
+	<!-- 默認加載好多嘅參數綁定方法，比如json轉換解析器就默認加載了。 -->
+	<mvc:annotation-driven
+		conversion-service="conversionService" />
+
+<!-- 自定義參數綁定 -->
+<bean id="conversionService"
+	class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+	<!-- 轉換器 -->
+	<property name="converters">
+		<list>
+			<!-- 日期類型轉換 -->
+			<bean
+				class="com.mytest.controller.converter.PersonDateConverter" />
+		</list>
+	</property>
+</bean>
+
+
+
+
+
+	<!-- 使用組件掃描。掃描指定comtroller嘅包。 -->
+	<context:component-scan
+		base-package="com.mytest.controller"></context:component-scan>
+
+
+
+	<!-- 第4步 -->
+	<!-- Start: 配置ViewResolver。 -->
+	<!-- 解析jsp，默認使用jstl標籤。所以項目必須導入jstl.jar。 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+	<!-- End: 配置ViewResolver。 -->
+
+
+
+
+</beans>

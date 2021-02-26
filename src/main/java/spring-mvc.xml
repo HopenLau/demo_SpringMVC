@@ -11,7 +11,7 @@
       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 使用註釋嘅包，包括子集。 -->
-	<context:component-scan base-package="com.mytest" />
+	<context:component-scan base-package="com.demo" />
 
 	<!-- 視圖解析器。 -->
 	<bean id="viewResolver"
