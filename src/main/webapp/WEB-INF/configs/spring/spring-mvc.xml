@@ -11,8 +11,8 @@
       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!--使用註釋嘅包，包括子集。 -->
-	<!--使用組件掃描。掃描指定comtroller嘅包。 -->
-	<context:component-scan base-package="com.mytest" />
+	<!--使用組件掃描。掃描指定controller嘅包。 -->
+	<context:component-scan base-package="com.demo" />
 
 	<!-- don't handle the static resource -->
 	<mvc:default-servlet-handler />
